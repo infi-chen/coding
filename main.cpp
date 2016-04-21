@@ -5,44 +5,41 @@ long change(long a) {
     int base = 10;
     int mod;
     long ret = 0;
-    PRINT("a = %ld\n", a);
+    PRINT("colored: input = %ld\n", a);
 
     while(a > 0) {
         mod = a % base;
         a = a / base;
         ret = ret * base + mod;
     }
-    PRINT("change: %ld\n", ret);
+    PRINT("result: %ld\n", ret);
     return ret;
 }
 
-int revert(const char string[]) {
-    char *result;
-    int i;
-    int len = strlen(string);
-    //result = (char *)malloc(len+1);
-    result = strdup(string);
-    PRINT("string : %s %d\n", string, len);
-    for(i=0;i< len;i++){
-        result[i] = string[len-i-1];
-    }
-    result[len] = '\0';
-    PRINT("result : %s %d\n", result, len);
-    free(result);
+UTEST(ChangeTest_PassDemo)
+{
+    test_eq(4321, change(1234));
+    test_eq(87654321, change(12345678));
+}
+
+UTEST(ChangeTest_FailDemo)
+{
+    test_eq(1234, change(1234));
+    test_eq(12345678, change(12345678));
+}
+
+
+int test_function() {
+
+    RUN_ALL_TESTS();
+
     return 0;
 }
 
+
 int main(int argc, char *argv[])
 {
-    const char *s="12345678";
-    FILE *f;
-    f = fopen("/tmp/tmp.txt", "r");
-    assert(f);
-    change(0x12345678);
-    fclose(f);
-    perror("done");
-    revert(s);
-    fflush(stderr);
+    test_function();
     return 0;
 }
 
