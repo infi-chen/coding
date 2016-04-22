@@ -1,6 +1,6 @@
 CXXFLAGS = -O2 -g -fmessage-length=0
-
-OBJS =	main.o  UnitTest.o
+OBJS =	main.o  UnitTest.o clib/my_string.o
+INCS = test.h
 
 LIBS =
 

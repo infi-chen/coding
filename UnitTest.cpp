@@ -24,7 +24,7 @@ int UnitTest::Run()
         std::cout << GREEN << "Run TestCase:" << testcase->testcase_name << std::endl;
         testcase->Run();
         std::cout << GREEN << "End TestCase:" << testcase->testcase_name << std::endl;
-        DBG(testcase->nTestResult);
+
         if (testcase->nTestResult)
         {
             nPassed++;
@@ -36,7 +36,7 @@ int UnitTest::Run()
         }
     }
 
-    std::cout << GREEN << "======================================" << std::endl;
+    std::cout << GREEN << "\n\n================  summary  ======================" << std::endl;
     std::cout << GREEN << "Total TestCase : " << nPassed + nFailed << std::endl;
     std::cout << GREEN << "Passed : " << nPassed << std::endl;
     std::cout << RED << "Failed : " << nFailed << std::endl;

@@ -1,4 +1,5 @@
 #include "test.h"
+#include "clib/my_string.h"
 #include <string.h>
 
 long change(long a) {
